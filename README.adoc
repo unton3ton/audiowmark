@@ -1,3 +1,6 @@
+> Болтовня ничего не стоит. Покажите мне код.  
+© Линус Торвальдс
+
 = audiowmark - Audio Watermarking
 
 == Description
