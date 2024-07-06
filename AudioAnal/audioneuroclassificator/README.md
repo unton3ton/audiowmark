@@ -1,4 +1,8 @@
-
+![](https://raw.githubusercontent.com/unton3ton/audiowmark/master/AudioAnal/audioneuroclassificator/arch-toyresnet.jpg)
+![](https://raw.githubusercontent.com/unton3ton/audiowmark/master/AudioAnal/audioneuroclassificator/toyresnet.PNG)
+![](https://raw.githubusercontent.com/unton3ton/audiowmark/master/AudioAnal/audioneuroclassificator/toyresnet-trainval.PNG)
+![](https://raw.githubusercontent.com/unton3ton/audiowmark/master/AudioAnal/audioneuroclassificator/toyresnet.matrix.PNG)
+![](https://raw.githubusercontent.com/unton3ton/audiowmark/master/AudioAnal/audioneuroclassificator/toyresnet.metrix-10epochs.PNG)
 
 # Sources
 
