@@ -762,3 +762,13 @@ Example that outputs the usage message:
 
   docker build -t audiowmark .
   docker run -v <local-data-directory>:/data --rm -i audiowmark -h
+
+# Sources
+
+* [audiowmark](https://code.uplex.de/stefan/audiowmark)
+* [Video classification with a 3D convolutional neural network](https://www.tensorflow.org/tutorials/video/video_classification)
+* [Compare two different Audio in Python](https://iq.opengenus.org/compare-audio-python/)
+* [🎛️🐍 Преобразования Фурье для обработки сигналов с помощью Python](https://proglib.io/p/preobrazovaniya-fure-dlya-obrabotki-signalov-s-pomoshchyu-python-2020-11-03)
+* [Audio Recognition in Tensorflow](https://www.geeksforgeeks.org/audio-recognition-in-tensorflow/)
+* [Создаем ResNet подобную архитектуру для классификации изображений](https://proproprogs.ru/tensorflow/keras-sozdaem-resnet-podobnuyu-arhitekturu-dlya-klassifikacii-izobrazheniy-cifar-10)
+* [Анализ аудиоданных (часть 3)](https://habr.com/ru/articles/672094/)
