@@ -83,10 +83,10 @@ bits should be a *hash* or *HMAC* of some sort.
 
 The most important options for adding a watermark are:
 
-key <filename>::  
+key <filename>  
 Use watermarking key from file <filename> (see <<key>>).
 
-strength <s>::  
+strength <s>  
 Set the watermarking strength (see <<strength>>).
 
 ### Retrieving a Watermark
@@ -94,7 +94,7 @@ Set the watermarking strength (see <<strength>>).
 To get the 128-bit message from the watermarked file, use:
 
 [subs=+quotes]
-....
+```bash
   *$ audiowmark get out.wav*
   pattern  0:05 0123456789abcdef0011223344556677 1.324 0.059 A
   pattern  0:57 0123456789abcdef0011223344556677 1.413 0.112 B
@@ -103,7 +103,7 @@ To get the 128-bit message from the watermarked file, use:
   pattern  2:40 0123456789abcdef0011223344556677 1.361 0.093 B
   pattern  2:40 0123456789abcdef0011223344556677 1.331 0.096 AB
   pattern   all 0123456789abcdef0011223344556677 1.350 0.054
-....
+```
 The output of `audiowmark get` is designed to be machine readable. Each line
 that starts with `pattern` contains one decoded message. The fields are
 seperated by one or more space characters. The first field is a *timestamp*
@@ -145,17 +145,17 @@ other patterns were incorrect, this could still be right).
 
 The most important options for getting a watermark are:
 
-key <filename>::  
+key <filename>  
 Use watermarking key from file <filename> (see <<key>>).
 
-strength <s>::  
+strength <s>  
 Set the watermarking strength (see <<strength>>).
 
-detect-speed::  
-detect-speed-patient::  
+detect-speed  
+detect-speed-patient  
 Detect and correct replay speed difference (see <<speed>>).
 
-json <file>::  
+json <file>  
 Write results to <file> in machine readable JSON format.
 
 [[key]]
@@ -255,7 +255,9 @@ using the first 128 bits of a SHA-256 hash like this:
 
 This 128-bit message can be used as watermark:
 
-  $ audiowmark add --key my.key song.wav song.wm.wav $MSG
+  ```bash
+$ audiowmark add --key my.key song.wav song.wm.wav $MSG
+```
 
 At this point, we should also *create a database entry* consisting of the
 hash value `$MSG` and the corresponding string `$STRING`.
@@ -267,10 +269,12 @@ and `|`, so these cases need to be dealt with.
 _If we find a watermarked copy of the song on the net_, the first step is to
 detect the watermark message using
 
-  $ audiowmark get --key my.key song.wm.wav
+  ```bash
+$ audiowmark get --key my.key song.wm.wav
   pattern  0:05 ecd057f0d1fbb25d6430b338b5d72eb2 1.377 0.068 A
   pattern  0:57 ecd057f0d1fbb25d6430b338b5d72eb2 1.392 0.109 B
   [...]
+```
 
 The second step is to perform a *database lookup* for each result returned by
 `audiowmark`. If we find a matching entry in our database, this is one of the
@@ -315,16 +319,16 @@ speed is approximately *[0.8..1.25]*.
 Example: add a watermark to `in.wav` and increase the replay speed by 5% using
 `sox`.
 [subs=+quotes]
-....
+```bash
   *$ audiowmark add in.wav out.wav 0123456789abcdef0011223344556677*
   [...]
   *$ sox out.wav out1.wav speed 1.05*
-....
+```
 
 Without speed detection, we get no results. With speed detection the speed
 difference is detected and corrected so we get results.
 [subs=+quotes]
-....
+```bash
   *$ audiowmark get out1.wav*
   *$ audiowmark get out1.wav --detect-speed*
   speed 1.049966
@@ -333,7 +337,7 @@ difference is detected and corrected so we get results.
   pattern  0:57 0123456789abcdef0011223344556677 1.255 0.145 AB-SPEED
   pattern  1:49 0123456789abcdef0011223344556677 1.380 0.173 A-SPEED
   pattern   all 0123456789abcdef0011223344556677 1.297 0.130 SPEED
-....
+```
 
 The speed detection algorithm is not enabled by default because it is
 relatively slow (total cpu time required) and needs a lot of memory. However
@@ -376,7 +380,7 @@ For video files, `videowmark` can be used to add a watermark to the audio track
 of video files. To add a watermark, use
 
 [subs=+quotes]
-....
+```bash
   *$ videowmark add in.avi out.avi 0123456789abcdef0011223344556677*
   Audio Codec:  -c:a mp3 -ab 128000
   Input:        in.avi
@@ -388,12 +392,12 @@ of video files. To add a watermark, use
   Sample Rate:  44100
   Channels:     2
   Data Blocks:  4
-....
+```
 
 To detect a watermark, use
 
 [subs=+quotes]
-....
+```bash
   *$ videowmark get out.avi*
   pattern  0:05 0123456789abcdef0011223344556677 1.294 0.142 A
   pattern  0:57 0123456789abcdef0011223344556677 1.191 0.144 B
@@ -402,14 +406,14 @@ To detect a watermark, use
   pattern  2:40 0123456789abcdef0011223344556677 1.079 0.128 B
   pattern  2:40 0123456789abcdef0011223344556677 1.147 0.126 AB
   pattern   all 0123456789abcdef0011223344556677 1.195 0.104
-....
+```
 
 The key and strength can be set using the command line options
 
-key <filename>::  
+key <filename>  
 Use watermarking key from file <filename> (see <<key>>).
 
-strength <s>::  
+strength <s>  
 Set the watermarking strength (see <<strength>>).
 
 Videos can be watermarked on-the-fly using <<hls>>.
